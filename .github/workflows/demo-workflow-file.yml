@@ -1,5 +1,5 @@
+name: Demo Example
 on: [push]
-
 jobs:
   build:
   name: Hello world
