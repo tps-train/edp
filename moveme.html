@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="moveme.css">
+        <script defer>
+            function moveme() {
+                var div=document.getElementById("me");
+                div.style.left=div.offsetLeft+5+"px";
+                
+                document.getElementById("count").innerText=div.style.left
+            }
+        </script>
+    </head>
+    <body>
+        <div id="me">O</div>
+        <div id="count"></div>
+        <script>
+            var waiter=setInterval(moveme,500)
+        </script>
+    </body>
+</html>
