@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>Select box example</title>
+        <script defer>
+            function selectedFilm() {
+                let selected = document.querySelector("#choseFilm").value
+                if ( selected == "Star Wars") {
+                    document.querySelector("#outcome").innerHTML="<h1>Awesome film!</h1>"
+                } else {
+                    document.querySelector("#outcome").innerHTML="<h1>Average film!</h1>"
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <select id="choseFilm" onchange="selectedFilm()">
+            <option value="0">Choose your film</option>
+        </select>
+        <div id="outcome"></div>
+        <script>
+            let films=["Star Wars","Star Trek","Aliens","Back To The Future"]
+
+            var select = document.querySelector("#choseFilm")
+
+            // for(var i = 0; i < films.length; i++) {
+            //     var opt = films[i];
+            //     var el = document.createElement("option");
+            //     el.textContent = opt;
+            //     el.value = opt;
+            //     console.log(films[i])
+            //     select.appendChild(el);
+            // }
+            for (film of films) {
+                var el = document.createElement("option")
+                el.textContent=film
+                el.value=film
+                select.appendChild(el)
+            }
+        </script>
+    </body>
+</html>
