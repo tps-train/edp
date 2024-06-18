@@ -2,8 +2,8 @@ name: Demo Example
 run-name: 
 on: [push]
 jobs:
-  runs-on: ubuntu-latest
-  steps:
-    run: |
-      echo This demo file shows a 
-      echo very basic and easy-to-understand workflow.
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo This demo file shows a 
+      - run: echo very basic and easy-to-understand workflow.
