@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+   <style>
+      #movingDiv {
+         position: relative;
+         width: 200px;
+         height: 200px;
+      }
+   </style>
+</head>
+<body>
+   <div id="movingDiv"> This is my moving div! </div>
+   <script>
+      var interval = setInterval(function() {
+      var div = document.getElementById("movingDiv");
+      div.style.top = div.offsetTop + 1 + "px";
+      div.style.left = div.offsetLeft + 1 + "px"; },
+      1000);
+   </script>
+</body>
+</html>
