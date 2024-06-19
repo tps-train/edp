@@ -10,6 +10,6 @@
        * Private network with 2 virtual machine instances to run the web service
        * A database server that can only be accessed by the private network
 
-Your diagram should use the cloud providers icons in the diagram to represent the components, and a key to let us know what they are.
+   Your diagram should use the cloud providers icons in the diagram to represent the components, and a key to let us know what they are.
 
 5. Based on your chosen cloud provider in 4, how can you ensure that your infrastructure will be resilient to failure?
