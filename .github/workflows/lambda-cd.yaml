@@ -39,4 +39,4 @@ jobs:
 
       - name: Update Lambda function
         run: |
-          aws lambda update-function-code --function-name resize --s3-bucket <replace with your S3 bucket name> --s3-key resize.zip
+          aws lambda update-function-code --function-name resize --s3-bucket stevewas --s3-key resize.zip
