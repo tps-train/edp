@@ -18,12 +18,12 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd aws
+          cd aws-gitactions/aws
           npm install --cpu=x64 --os=linux sharp --include=optional
 
       - name: Zip Lambda function
         run: |
-          cd aws
+          cd aws-gitactions/aws
           zip -r function.zip .
 
       - name: Set up AWS CLI
@@ -35,7 +35,7 @@ jobs:
 
       - name: Upload zip file to S3
         run: |
-          aws s3 cp ./aws/function.zip s3://stevewas/resize.zip
+          aws s3 cp ./aws-gitactions/aws/function.zip s3://stevewas/resize.zip
 
       - name: Update Lambda function
         run: |
