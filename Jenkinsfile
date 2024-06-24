@@ -1,8 +1,10 @@
 pipeline {
     agent any
-    stages('First Pipeline') {
-        steps {
-            bat echo "Stage 1"
+    stages {
+        stage('First Pipeline') {
+            steps {
+                bat echo "Stage 1"
+            }
         }
     }
 }
