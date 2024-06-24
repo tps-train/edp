@@ -10,3 +10,10 @@ jobs:
       - run: ls -la
       - run: pwd
       - run: echo "End of pipeline run"
+  Second-Flow:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Start of pipeline job 2"
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - run: ls -la
