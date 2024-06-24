@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('First Pipeline') {
             steps {
-                cmd_exec('echo "Stage 1"')
+                bat 'echo "Stage 1"'
             }
         }
     }
