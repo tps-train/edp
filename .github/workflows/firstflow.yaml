@@ -1,0 +1,12 @@
+name: First Flow Demo
+run-name: ${{ github.actor }} is testing out GitHub Actions
+on: [push]
+
+jobs:
+  First-Flow-Demo:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Start of pipeline"
+      - run: ls -la
+      - run: pwd
+      - run: echo "End of pipeline run"
