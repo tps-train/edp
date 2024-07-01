@@ -3,8 +3,10 @@ pipeline {
     stages {
         stage('Checkout IMS') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], url: 'https://github.com/mhy20401/Inventory-Management-System-MERN-CRUD-App.git'])
-                bat "dir /p"
+                dir("IMS") {
+                    checkout([$class: 'GitSCM', branches: [[name: '*/main']], url: 'https://github.com/mhy20401/Inventory-Management-System-MERN-CRUD-App.git'])
+                    bat "dir /p"
+                }
             }
         }
     }
