@@ -25,5 +25,23 @@ pipeline {
                 }
             }
         }
+        stage('Run server') {
+            parallel {
+                stage('Backend') {
+                    steps {
+                        dir("IMS/CalibrationResults/Backend") {
+                            bat "npm run server"
+                        }
+                    }
+                }
+                stage('Frontend') {
+                    steps {
+                        dir("IMS/CalibrationResults/Frontend/inventory_management_system") {
+                            bat "npm start"
+                        }
+                    }
+                }
+            }
+        }
     }
 }
