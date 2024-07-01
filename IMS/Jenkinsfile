@@ -12,6 +12,8 @@ pipeline {
                         submoduleCfg: [],
                         userRemoteConfigs: [[url: 'https://github.com/mhy20401/Inventory-Management-System-MERN-CRUD-App.git']]
                     ])
+                }
+                dir("IMS/CalibrationResults") {
                     bat "dir /p"
                 }
             }
