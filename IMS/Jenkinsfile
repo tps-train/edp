@@ -9,7 +9,7 @@ pipeline {
                     doGenerateSubmoduleConfigurations: false,
                     extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'CalibrationResults']],
                     submoduleCfg: [],
-                    serRemoteConfigs: [[url: 'https://github.com/mhy20401/Inventory-Management-System-MERN-CRUD-App.git']]
+                    userRemoteConfigs: [[url: 'https://github.com/mhy20401/Inventory-Management-System-MERN-CRUD-App.git']]
                 ])
                 bat "dir /p"
             }
