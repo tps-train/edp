@@ -1,2 +1,2 @@
-db.connect('mongodb://localhost:27017/IMS');
+use IMS;
 db.createCollection("products");
