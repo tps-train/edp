@@ -18,5 +18,12 @@ pipeline {
                 }
             }
         }
+        stage('Create Mongo Database') {
+            steps {
+                dir("IMS") {
+                    bat "mongosh --host localhost --port 27017 -f buildmongo.js"
+                }
+            }
+        }
     }
 }
