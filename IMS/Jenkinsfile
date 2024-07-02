@@ -57,31 +57,33 @@ pipeline {
         stage('Run Services') {
             parallel {
                 stage('Backend') {
-                    try {
-                        steps {
-                            dir("IMS/CalibrationResults/Backend") {
-                                timeout(time: 3, unit: 'MINUTES') {
-                                    bat "npm run server"
+                    steps {
+                        dir("IMS/CalibrationResults/Backend") {
+                            script {
+                                try {
+                                    timeout(time: 3, unit: 'MINUTES') {
+                                        bat "npm run server"
+                                    }
+                                } catch (err) {
+                                    // We're cheating here to pretend we've started these in background
+                                    proceed = true
                                 }
                             }
                         }
-                    } catch (err) {
-                        // We're cheating here to pretend we've started these in background
-                        proceed = true
                     }
                 }
                 stage('Frontend') {
-                    try {
-                        steps {
-                            dir("IMS/CalibrationResults/Frontend/inventory_management_system") {
+                    steps {
+                        dir("IMS/CalibrationResults/Frontend/inventory_management_system") {
+                            try {
                                 timeout(time: 3, unit: 'MINUTES') {
                                     bat "npm start"
                                 }
+                            } catch (err) {
+                                // We're cheating here to pretend we've started these in background
+                                proceed = true
                             }
                         }
-                    } catch (err) {
-                        // We're cheating here to pretend we've started these in background
-                        proceed = true
                     }
                 }
             }
