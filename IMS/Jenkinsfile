@@ -75,13 +75,15 @@ pipeline {
                 stage('Frontend') {
                     steps {
                         dir("IMS/CalibrationResults/Frontend/inventory_management_system") {
-                            try {
-                                timeout(time: 3, unit: 'MINUTES') {
-                                    bat "npm start"
+                            script {
+                                try {
+                                    timeout(time: 3, unit: 'MINUTES') {
+                                        bat "npm start"
+                                    }
+                                } catch (err) {
+                                    // We're cheating here to pretend we've started these in background
+                                    proceed = true
                                 }
-                            } catch (err) {
-                                // We're cheating here to pretend we've started these in background
-                                proceed = true
                             }
                         }
                     }
