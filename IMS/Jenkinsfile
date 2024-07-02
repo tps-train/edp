@@ -102,14 +102,14 @@ pipeline {
                 stage('Backend package') {
                     steps {
                         dir("IMS/CalibrationResults/Backend") {
-                            bat "npm build"
+                            bat "npm run build"
                         }
                     }
                 }
                 stage('Frontend package') {
                     steps {
                         dir("IMS/CalibrationResults/Frontend/inventory_management_system") {
-                            bat "npm build"
+                            bat "npm run build"
                         }
                     }
                 }
