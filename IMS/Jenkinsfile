@@ -57,31 +57,31 @@ pipeline {
         stage('Run Services') {
             parallel {
                 stage('Backend') {
-                    steps {
-                        dir("IMS/CalibrationResults/Backend") {
-                            try {
+                    try {
+                        steps {
+                            dir("IMS/CalibrationResults/Backend") {
                                 timeout(time: 3, unit: 'MINUTES') {
                                     bat "npm run server"
                                 }
-                            } catch (err) {
-                                // We're cheating here to pretend we've started these in background
-                                proceed = true
                             }
                         }
+                    } catch (err) {
+                        // We're cheating here to pretend we've started these in background
+                        proceed = true
                     }
                 }
                 stage('Frontend') {
-                    steps {
-                        dir("IMS/CalibrationResults/Frontend/inventory_management_system") {
-                            try {
+                    try {
+                        steps {
+                            dir("IMS/CalibrationResults/Frontend/inventory_management_system") {
                                 timeout(time: 3, unit: 'MINUTES') {
                                     bat "npm start"
                                 }
-                            } catch (err) {
-                                // We're cheating here to pretend we've started these in background
-                                proceed = true
                             }
                         }
+                    } catch (err) {
+                        // We're cheating here to pretend we've started these in background
+                        proceed = true
                     }
                 }
             }
