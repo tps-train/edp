@@ -47,8 +47,8 @@ pipeline {
             }
         }
         stage('Run Unit Tests and Linting') {
-            dir("IMS") {
-                steps {
+            steps {
+                dir("IMS") {
                     bat "echo 'Running unit tests and linting"
                 }
             }
@@ -72,8 +72,8 @@ pipeline {
             }
         }
         stage('Run QA tests') {
-            dir("IMS") {
-                steps {
+            steps {
+                dir("IMS") {
                     bat "echo 'Running QA tests with Selenium'"
                 }
             }
