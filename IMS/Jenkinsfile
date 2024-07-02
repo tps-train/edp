@@ -46,6 +46,13 @@ pipeline {
                 }
             }
         }
+        stage('Run Unit Tests and Linting') {
+            dir("IMS") {
+                steps {
+                    bat "echo 'Running unit tests and linting"
+                }
+            }
+        }
         stage('Run Services') {
             parallel {
                 stage('Backend') {
@@ -59,6 +66,49 @@ pipeline {
                     steps {
                         dir("IMS/CalibrationResults/Frontend/inventory_management_system") {
                             bat "npm start"
+                        }
+                    }
+                }
+            }
+        }
+        stage('Run QA tests') {
+            dir("IMS") {
+                steps {
+                    bat "echo 'Running QA tests with Selenium'"
+                }
+            }
+        }
+        stage('Build packages') {
+            parallel {
+                stage('Backend package') {
+                    steps {
+                        dir("IMS/CalibrationResults/Backend") {
+                            bat "npm build"
+                        }
+                    }
+                }
+                stage('Frontend package') {
+                    steps {
+                        dir("IMS/CalibrationResults/Frontend/inventory_management_system") {
+                            bat "npm build"
+                        }
+                    }
+                }
+            }
+        }
+        stage('Publish packages') {
+            parallel {
+                stage('Backend publish') {
+                    steps {
+                        dir("IMS/CalibrationResults/Backend") {
+                            bat "echo 'Command to publish to software repository for backend'"
+                        }
+                    }
+                }
+                stage('Frontend package') {
+                    steps {
+                        dir("IMS/CalibrationResults/Frontend/inventory_management_system") {
+                            bat "echo 'Command to publish to software repository for frontend"
                         }
                     }
                 }
