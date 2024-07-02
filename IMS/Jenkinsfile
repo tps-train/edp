@@ -1,7 +1,7 @@
 pipeline {
     agent any
     options {
-        timeout(time: 10, unit: "MINUTES")
+        timeout(time: 30, unit: "MINUTES")
     }
     stages {
         stage('Checkout IMS') {
@@ -49,7 +49,9 @@ pipeline {
         stage('Run Unit Tests and Linting') {
             steps {
                 dir("IMS") {
+                    bat "npm install lint"
                     bat "echo 'Running unit tests and linting"
+                    bat "npm run lint"
                 }
             }
         }
@@ -58,14 +60,18 @@ pipeline {
                 stage('Backend') {
                     steps {
                         dir("IMS/CalibrationResults/Backend") {
-                            bat "npm run server"
+                            timeout(time: 5, unit: 'MINUTES') {
+                                bat "npm run server"
+                            }
                         }
                     }
                 }
                 stage('Frontend') {
                     steps {
                         dir("IMS/CalibrationResults/Frontend/inventory_management_system") {
-                            bat "npm start"
+                            timeout(time: 5, unit: 'MINUTES') {
+                                bat "npm start"
+                            }
                         }
                     }
                 }
