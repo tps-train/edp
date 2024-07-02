@@ -102,7 +102,7 @@ pipeline {
                 stage('Backend package') {
                     steps {
                         dir("IMS/CalibrationResults/Backend") {
-                            bat "npm run build"
+                            bat "echo 'tar or zip up file for deployment"
                         }
                     }
                 }
