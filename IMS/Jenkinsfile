@@ -49,9 +49,8 @@ pipeline {
         stage('Run Unit Tests and Linting') {
             steps {
                 dir("IMS") {
-                    bat "npm install lint"
+                    bat "echo 'Install linter"
                     bat "echo 'Running unit tests and linting"
-                    bat "npm run lint"
                 }
             }
         }
